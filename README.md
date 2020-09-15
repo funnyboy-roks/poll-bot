@@ -1,2 +1,2 @@
-# poll-bot
-A simple bot for starting polls
+# Reaction-Bot
+Discord Reaction Bot - Mainly For Testing
