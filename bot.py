@@ -195,6 +195,7 @@ async def on_raw_reaction_add(payload):
             return
 
     elif poll["status"] == "ACTIVE":  # If poll is ACTIVE
+        # try:
         await message.remove_reaction(emoji=payload.emoji, member=payload.member)
 
         for x in poll["voted_users"]:
@@ -218,7 +219,7 @@ async def on_raw_reaction_add(payload):
                         })
                 else:
                     poll["reactions"][poll["voted_users"][change_vote_index]["reaction_choice"]]["count"] -= 1
-                    poll["voted_users"] = {
+                    poll["voted_users"][change_vote_index] = {
                         "user_id": payload.member.id,
                         "reaction_choice": i,
                         "reaction_name": payload.emoji.name,
@@ -227,6 +228,8 @@ async def on_raw_reaction_add(payload):
                 update_db(g=payload.member.guild, polls=polls_list)
                 await update_poll_embed(g=payload.member.guild, poll_id=poll_id, poll=poll)
                 return
+        # except Exception as e:
+        #     print(e)
 
 
 async def update_poll_embed(g=None, poll_id=None, emoji=None, colour=None, poll=None):

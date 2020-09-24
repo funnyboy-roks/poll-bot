@@ -8,6 +8,7 @@
   * [ ] `/poll edit <value> <message>`
 * [ ] Help Messages
 * [ ] Voting
-  * [ ] Players can only vote once
+  * [X] Players can only vote once
   * [X] Remove Reaction
   * [X] Add 1 to specific vote count
+  * [ ] Users can't add new reactions
